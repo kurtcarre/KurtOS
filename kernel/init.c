@@ -6,8 +6,11 @@ Licensed under AGPL v3
 
 Kernel Init
 */
-
+#include "kernel.h"
+#include "terminal.h"
 void kinit()
 {
-    int ver = 1;
+    int ver = VER;
+
+    terminal_init();
 }
