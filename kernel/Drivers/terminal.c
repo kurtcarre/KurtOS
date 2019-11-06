@@ -8,6 +8,7 @@ Terminal driver
 */
 
 #include "terminal.h"
+#include "io.h"
 
 static const size_t WIDTH = 80;
 static const size_t HEIGHT = 25;
@@ -80,7 +81,16 @@ void terminal_putchar(char c)
     }
 }
 
+void move_cursor(size_t row, size_t column)
+{
+    unsigned short pos = (row*80) + column;
+
+    outb(0x3D4, 0x0F);
+    outb(0x3D5, (unsigned char)(pos&0xFF));
+    outb(0x3D4, (unsigned char)((pos>>8)&0xFF));
+}
+
 void update_cursor()
 {
-    
+    move_cursor(term_row, term_column);
 }

@@ -17,5 +17,5 @@ void kinit()
 
     terminal_init();
 
-    printf("Loading KurtOS...");
+    printf("Loading KurtOS version %d ...", ver);
 }

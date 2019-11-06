@@ -16,9 +16,9 @@ Terminal driver header
 
 void terminal_init();
 
-void terminal_putchar(char c);
+void terminal_putchar(char);
 
-void terminal_setcolour(uint8_t colour);
+void terminal_setcolour(uint8_t);
 
 void update_cursor();
 
