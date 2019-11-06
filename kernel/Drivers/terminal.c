@@ -79,3 +79,8 @@ void terminal_putchar(char c)
             term_row = 0;
     }
 }
+
+void update_cursor()
+{
+    
+}

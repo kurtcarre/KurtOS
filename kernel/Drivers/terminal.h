@@ -7,7 +7,10 @@ Licensed under AGPL v3
 Terminal driver header
 */
 
-#include <stdbool.h>
+#ifndef _DRV_TERM
+
+#define _DRV_TERM 1
+
 #include <stddef.h>
 #include <stdint.h>
 
@@ -50,3 +53,5 @@ static inline uint16_t vga_entry(unsigned char c, uint8_t colour)
 {
     return (uint16_t) c | (uint16_t) colour << 8;
 }
+
+#endif
