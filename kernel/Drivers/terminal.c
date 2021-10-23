@@ -13,10 +13,10 @@ Terminal driver
 static const size_t WIDTH = 80;
 static const size_t HEIGHT = 25;
 
-size_t term_row;
-size_t term_column;
-uint8_t term_colour;
-uint16_t* term_buffer;
+static size_t term_row;
+static size_t term_column;
+static uint8_t term_colour;
+static uint16_t* term_buffer;
 
 void terminal_init()
 {
@@ -30,7 +30,7 @@ void terminal_init()
 void clear_screen()
 {
     term_row = 0;
-    term_colour = 0;
+    term_column = 0;
     for(size_t y = 0; y < HEIGHT; y++)
     {
         for(size_t x; x < WIDTH; x++)
@@ -46,14 +46,15 @@ void terminal_setcolour(uint8_t colour)
     term_colour = colour;
 }
 
-void terminal_putcharat(char c, uint8_t colour, size_t x, size_t y)
+void terminal_putcharat(unsigned char c, uint8_t colour, size_t x, size_t y)
 {
-    size_t index = y * WIDTH + x;
+    const size_t index = y * WIDTH + x;
     term_buffer[index] = vga_entry(c, colour);
 }
 
 void terminal_putchar(char c)
 {
+    unsigned char uc = c;
     switch (c)
     {
         case '\n':
@@ -71,7 +72,7 @@ void terminal_putchar(char c)
             term_column = 0;
             return;
         default:
-            terminal_putcharat(c, term_colour, term_column, term_row);
+            terminal_putcharat(uc, term_colour, term_column, term_row);
     }
     if(++term_column == WIDTH)
     {
