@@ -28,5 +28,5 @@ void kinit()
 
     term_print("Kernel starting...\n");
 
-    printf("\nLoading KurtOS version %d ...", ver);
+    printf("\nLoading KurtOS version %d...", ver);
 }

@@ -55,7 +55,7 @@ int printf(const char* restrict format, ...)
             continue;
         }
 
-        const char* fromat_begun_at = format++;
+        const char* format_begun_at = format++;
 
         if(*format == 'c')
         {
@@ -82,9 +82,14 @@ int printf(const char* restrict format, ...)
             
             written += len;
         }
+        else if(*format == 'd')
+        {
+            print("A number", strlen("A number"));
+            format++;
+        }
         else
         {
-            format = fromat_begun_at;
+            format = format_begun_at;
             size_t len = strlen(format);
             if(maxrem < len)
                 return -1;
