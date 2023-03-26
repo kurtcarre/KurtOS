@@ -80,6 +80,7 @@ void terminal_putchar(char c)
         if(++term_row == HEIGHT)
             term_row = 0;
     }
+    //update_cursor();
 }
 
 void move_cursor(size_t row, size_t column)
